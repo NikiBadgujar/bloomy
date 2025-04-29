@@ -6,7 +6,7 @@ from django.conf import settings
 
 admin.site.register(Flower)
 admin.site.register(Cart)
-
+# custom model for orders
 @admin.register(Order)
 class OrderAdmin(admin.ModelAdmin):
     list_display = ('user', 'status', 'phone', 'address')
