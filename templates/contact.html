@@ -1,0 +1,69 @@
+
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<body style="background: #fff8f0;">
+    {% for message in messages %}
+    <div class="alert alert-danger" role="alert">
+        {{ message }}
+    </div>
+    {% endfor %}
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #f7c8e0;">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="/" style="color: #a10056;">🌸 Bloomy</a>
+        </div>
+    </nav>
+
+    <header class="text-center py-5" style="background-color: #fde2e4;">
+        <h1 class="display-4" style="color: #a10056;">Contact Bloomy</h1>
+        <p class="lead" style="color: #333;">We’d Love to Hear From You!</p>
+    </header>
+
+    <div class="container my-5">
+        <div class="row g-4">
+            <div class="col-md-6">
+                <h2 style="color: #a10056;">Get in Touch</h2>
+                <p>Whether you have questions about our bouquets, custom orders, or delivery, the Bloomy team is here to help!</p>
+                <ul class="list-unstyled">
+                    <li><strong>📞 Phone:</strong> +91 9607311026</li>
+                    <li><strong>📧 Email:</strong> hello@bloomyflowers.com</li>
+                    <li><strong>📍 Address:</strong> 123 Petal Street, Blossom City</li>
+                </ul>
+                <p>Stop by or reach out — we’re excited to help you make your day bloom!</p>
+            </div>
+            
+            <div class="col-md-6">
+                <div class="card shadow" style="border: 2px dashed #f7c8e0;">
+                    <div class="card-body">
+                        <h4 class="card-title" style="color: #a10056;">Send Us a Message</h4>
+                        <form method='POST' action="/contact/">
+                            {% csrf_token %} 
+                            <div class="mb-3">
+                                <label for="name" class="form-label">Your Name</label>
+                                <input type="text" class="form-control" id="name" placeholder="Jane Doe" name="username">
+                            </div>
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Your Email</label>
+                                <input type="email" class="form-control" id="email" placeholder="jane@example.com" name="email">
+                            </div>
+                            <div class="mb-3">
+                                <label for="message" class="form-label">Your Message</label>
+                                <textarea class="form-control" id="message" rows="4" placeholder="Type your message here..." name="messages"></textarea>
+                            </div>
+                            <button type="submit" class="btn" style="background-color: #a10056; color: white;">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="text-center py-3" style="background-color: #f7c8e0;">
+        <p class="mb-0" style="color: #a10056;">&copy; 2025 Bloomy Flower Shop — Always Blooming for You 🌷</p>
+    </footer>
+
+    
+</body>
+    
+{% endblock %}

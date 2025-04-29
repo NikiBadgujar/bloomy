@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% load static %}
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/login.css' %}">
+{% endblock %}
+
+{% block content %}
+</head>
+<body>
+
+    <div class="login-card text-center">
+        <div class="mb-4">
+            <div class="brand-name">🌸 Bloomy</div>
+            <p class="text-muted">Welcome back! Please login to continue.</p>
+        </div>
+
+        <form method="post" action="/auth/login/">
+          
+                {% for message in messages %}
+                    <div class="alert alert-danger" role="alert">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            
+            {% csrf_token %}
+            <div class="mb-3 text-start">
+                <label for="username" class="form-label">Username</label>
+                <input type="text" class="form-control" id="username" placeholder="Enter your username" name="username">
+            </div>
+
+            <div class="mb-3 text-start">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" class="form-control" id="password" placeholder="Enter your password" name="password">
+            </div>
+
+            <div class="d-grid mb-3">
+                <button type="submit" class="btn" style="background-color: #a10056; color: white;">Login</button>
+            </div>
+
+            <p class="text-muted">Don't have an account? <a href="/auth/signup/" style="color: #a10056;">Sign Up</a></p>
+        </form>
+    </div>
+
+{% endblock %}

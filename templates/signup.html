@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% load static %}
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/signup.css' %}">
+{% endblock %}
+
+{% block content %}
+
+    <div class="signup-card text-center">
+        <div class="mb-4">
+            <div class="brand-name">🌸 Bloomy</div>
+            <p class="text-muted">Join our flower-loving family!</p>
+        </div>
+
+        <form method="post" action="/auth/signup/">
+            {% for message in messages %}
+                <div class="alert alert-danger" role="alert">
+                    {{ message }}
+                </div>
+            {% endfor %}
+
+          
+            {% csrf_token %}
+            <div class="mb-3 text-start">
+                <label for="username" class="form-label">Username</label>
+                <input type="text" class="form-control" id="username" placeholder="Choose a username" name="username">
+            </div>
+
+            <div class="mb-3 text-start">
+                <label for="email" class="form-label">Email</label>
+                Email:<input type="email" class="form-control" id="email" placeholder="Your email address" name="email">
+            </div>
+
+            <div class="mb-3 text-start">
+                <label for="password1" class="form-label">Password</label>
+                <input type="password" class="form-control"  placeholder="Create a password" name="password">
+            </div>
+
+
+            <div class="d-grid mb-3">
+                <button type="submit" class="btn" style="background-color: #a10056; color: white;">Sign Up</button>
+            </div>
+
+            <p class="text-muted">Already have an account? <a href="/auth/login/" style="color: #a10056;">Login</a></p>
+        </form>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% load static %}
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+{% endblock %}
+
+{% block content %}
+
+
+  <nav class="navbar">
+    <div class="logo">
+      <a href="#">🌸 Bloomy</a>
+    </div>
+    <div class="nav-links">
+      <a href="/contact/">Contact Us</a>
+      <a href="/about/">About Us</a>
+      {% if user.is_authenticated %}
+      <a href="/user/shop/">Shop</a>
+        <a href="/auth/logout/">Logout</a>
+      {% else %}
+        <a href="/auth/login/">Login</a>
+        <a href="/auth/signup/">Signup</a>
+      {% endif %}
+    
+     
+    </div>
+  </nav>
+
+  <section class="hero">
+    <h1>Welcome to Bloomy</h1>
+    <p>Your trusted partner for fresh and beautiful flowers delivered to your door.</p>
+  </section>
+
+  <section class="section">
+    <div class="card">
+      <img src="{% static 'img/choose.webp' %}" alt="Choose Flowers">
+      <p><strong>1. Choose Your Flowers:</strong><br> Browse our collection of fresh flowers and arrangements for every occasion.</p>
+    </div>
+    <div class="card">
+      <img src="{% static 'img/3511056.webp' %}" alt="Delivery">
+      <p><strong>2. Fast Delivery:</strong><br> We offer same-day delivery options so your flowers arrive fresh and on time.</p>
+    </div>
+    <div class="card">
+      <img src="{% static 'img/happy.jpg' %}" alt="Enjoy">
+      <p><strong>3. Enjoy the Smile:</strong><br> Make someone's day extra special with the gift of flowers from Bloomy.</p>
+    </div>
+  </section>
+
+{% endblock %}

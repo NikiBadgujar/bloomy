@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<nav class="navbar navbar-light bg-light shadow-sm mb-4">
+    <div class="container">
+      <a class="navbar-brand" href="/">🌸 FlowerShop</a>
+      <a class="btn btn-outline-primary" href="/user/shop/">Continue Shopping</a>
+    </div>
+  </nav>
+  {% for message in messages %}
+  <div class="alert alert-danger" role="alert">
+      {{ message }}
+  </div>
+{% endfor %}
+<h2 style="text-align: center;margin-top:5px;">My Orders</h2>
+{% for order in orders %}
+<div class="container mt-5 mb-5" style="margin-top: -150px;">
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                
+                <div class="invoice p-5">
+                    <h5>Bloomy</h5> <span class="font-weight-bold d-block mt-4">Hello, {{order.user}} </span>
+                    <span>Your order Details:</span>
+                    <div class="payment border-top mt-3 mb-3 border-bottom table-responsive">
+                        <table class="table table-borderless">
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <div class="py-2"> <span class="d-block text-muted">Order Status</span>
+                                            <span>{{order.status}}</span> </div>
+                                    </td>
+                                    
+                                    <td>
+                                        <div class="py-2"> <span class="d-block text-muted">Payment</span>
+                                            COD </div>
+                                    </td>
+                                    <td>
+                                        <div class="py-2"> <span class="d-block text-muted">Delivery Address</span>
+                                            <span>{{order.address}}</span> </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="product border-bottom table-responsive">
+                        <table class="table table-borderless">
+                            <tbody>
+                                {% for item in order.items.all %}
+                                <tr>
+                                    <td width="60%"> <span class="font-weight-bold">Order: {{order.flower.name}}</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td width="60%"> <span class="font-weight-bold">Quantity: {{order.quantity}}</span>
+                                    </td>
+                                </tr>
+                               {% endfor %}
+                                <tr>
+                                  <td width="60%"> <span class="font-weight-bold">Contact: {{order.phone}}</span>
+                                  </td>
+                              </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                   
+                    <p>You will be contacted as soon as the order reaches your location !</p>
+                    <p class="font-weight-bold mb-0">Thank you for choosing us!</p> <span>Team Bloomy</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endfor %}
+{% endblock %}
